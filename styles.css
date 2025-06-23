@@ -81,6 +81,19 @@ h1, h2 {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem;
+    justify-content: center;
+}
+
+/* スマートフォン表示の際に、動画が画面幅を超えないように調整 */
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr; /* 1列表示にする */
+    }
+
+    .video-item {
+        max-width: 350px; /* 必要に応じて最大幅を設定 */
+        margin: 0 auto; /* 中央寄せ */
+    }
 }
 
 .video-item {
