@@ -249,7 +249,8 @@ footer {
     
     .profile-content {
         max-width: 80%;
-        margin: 0 auto;
+        margin-left: 1rem;
+        margin-right: auto;
         padding: 2rem;
     }
     
