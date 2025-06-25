@@ -25,7 +25,7 @@ a:hover {
 /* ヘッダー */
 header {
     background-color: #ffffff;
-    padding: 30px 20px;
+    padding: 40px 20px; /* 少し大きめに */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
@@ -34,40 +34,63 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px;
+    max-width: 800px; /* プロフィール全体の最大幅 */
     margin: 0 auto;
     text-align: center;
 }
 
+/* プロフィール画像上のテキスト */
+.profile-header-text {
+    margin-bottom: 30px; /* 画像との間隔 */
+}
+
+.profile-header-text h1 {
+    font-size: 3.5em; /* Hakuの文字を大きく */
+    margin-bottom: 8px; /* Hakuとサブタイトルの間隔 */
+    color: #007bff; /* Hakuの色を強調 */
+    letter-spacing: 0.05em; /* 文字間隔を少し開ける */
+}
+
+.profile-header-text .subtitle {
+    font-size: 1.3em; /* サブタイトルを強調 */
+    color: #555;
+    margin-bottom: 0;
+}
+
+
 .profile-image {
-    width: 120px;
-    height: 120px;
+    width: 150px; /* プロフィール画像を元のサイズに戻すか、やや大きく */
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
-    border: 4px solid #007bff;
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+    margin-bottom: 30px; /* 画像と説明文の間隔 */
+    border: 5px solid #007bff; /* ボーダーを強調 */
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3); /* 影を強調 */
 }
 
-.profile-info h1 {
-    font-size: 2.4em;
-    margin-bottom: 5px;
-}
-
-.profile-info .subtitle {
+/* プロフィール説明文のコンテナ */
+.profile-description-container {
     font-size: 1.1em;
-    color: #666;
-    margin-bottom: 15px;
+    text-align: center; /* 説明文全体を中央寄せ */
+    line-height: 1.8;
+    max-width: 700px; /* 説明文の最大幅を制限して読みやすく */
+    margin: 0 auto;
 }
 
-.profile-description {
-    font-size: 1em;
-    text-align: left;
-    line-height: 1.7;
+.profile-description-container p {
+    margin-bottom: 1em; /* 段落間のスペース */
 }
 
-.profile-description p {
-    margin-bottom: 8px;
+.profile-description-intro {
+    font-weight: bold; /* 導入文を強調 */
+    color: #444;
+}
+
+.profile-description-cta {
+    font-size: 1.15em; /* 行動喚起のメッセージを強調 */
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 1.5em;
 }
 
 /* メインコンテンツ */
@@ -101,17 +124,17 @@ main {
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden; /* これが重要 */
+    overflow: hidden;
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     min-width: 200px;
     text-align: center;
     cursor: pointer;
-    z-index: 1; /* コンテンツが背景の上にくるように */
+    z-index: 1;
 }
 
 .category-item:hover {
-    color: #fff; /* ホバー時はテキストを白に */
+    color: #fff;
     border-color: #007bff;
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
     transform: translateY(-3px);
@@ -125,27 +148,26 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #007bff; /* 単色の背景 */
-    transform: scaleX(0); /* 横方向のスケールを0から開始 */
-    transform-origin: left; /* 左を起点に拡大 */
+    background-color: #007bff;
+    transform: scaleX(0);
+    transform-origin: left;
     transition: transform 0.4s ease;
-    z-index: -1; /* テキストの後ろに配置 */
+    z-index: -1;
 }
 
 .category-item:hover::before {
-    transform: scaleX(1); /* ホバー時に横方向に拡大して埋める */
+    transform: scaleX(1);
 }
 
 /* アクティブ時のスタイルも青い背景にする */
 .category-item.active {
-    background-color: #007bff; /* アクティブ時の背景色 */
-    color: #fff; /* アクティブ時のテキスト色 */
-    border-color: #007bff; /* アクティブ時のボーダー色 */
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
 }
-/* アクティブ時は::beforeアニメーションが邪魔しないように調整 */
 .category-item.active::before {
-    transform: scaleX(1); /* アクティブ時は常に背景を表示 */
+    transform: scaleX(1);
 }
 
 
@@ -209,6 +231,7 @@ main {
 
 .work-grid {
     display: grid;
+    /* PCでの作品サイズを大きくするためにminmaxの最小値を調整 */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     justify-content: center;
@@ -240,7 +263,7 @@ main {
 .work-item img {
     width: 100%;
     height: 220px; /* 画像の高さも動画と揃える */
-    object-fit: contain; /* ★ここをcontainに変更★: 画像全体が表示されるように */
+    object-fit: contain; /* 画像全体が表示されるように */
     display: block;
     background-color: #f0f0f0; /* contain時に余白ができる場合の背景色 */
     padding: 10px 0; /* contain時の上下の余白を少し調整 (必要に応じて削除・変更) */
@@ -299,19 +322,24 @@ footer {
     header {
         padding: 20px 15px;
     }
+    /* プロフィールセクションの調整 */
+    .profile-header-text h1 {
+        font-size: 2.5em; /* スマホでのHakuの文字サイズ */
+    }
+    .profile-header-text .subtitle {
+        font-size: 1.1em;
+    }
     .profile-image {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
     }
-    .profile-info h1 {
-        font-size: 2.0em;
-    }
-    .profile-info .subtitle {
-        font-size: 0.9em;
-    }
-    .profile-description {
-        font-size: 0.85em;
+    .profile-description-container {
+        font-size: 0.95em;
         padding: 0 10px;
+    }
+    .profile-description-cta {
+        font-size: 1.05em;
     }
 
     .category-selection-section {
@@ -352,9 +380,8 @@ footer {
     .work-item video,
     .work-item img {
         height: 180px; /* スマホでの高さを調整 */
-        padding: 5px 0; /* スマホでのpaddingも調整 */
+        padding: 5px 0;
     }
-    /* スマホで画像がcontainの時に余白が出るのを少し調整 */
     .work-item img {
         background-color: #f8f8f8; /* スマホでは背景色をボディの色に近づける */
     }
