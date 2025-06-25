@@ -45,9 +45,17 @@ header {
     gap: 3rem;
     align-items: center;
     padding: 2rem;
-    background: rgba(44, 62, 80, 0.95);
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(44,62,80,0.95));
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* テキストの可読性向上 */
+.profile-text {
+    background: linear-gradient(180deg, rgba(44,62,80,0.95), rgba(255,255,255,0.95));
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 768px) {
