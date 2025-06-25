@@ -229,14 +229,30 @@ footer {
 @media (max-width: 768px) {
     .profile-section {
         grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    
+    .profile-content {
+        max-width: 80%;
+        margin: 0 auto;
+        padding: 2rem;
     }
     
     .category-container {
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
     }
     
     .work-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .work-item {
+        max-width: 90%;
+        margin: 0 auto;
     }
 }
