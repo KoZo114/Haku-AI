@@ -185,7 +185,7 @@ main {
 
 .works-gallery h2 {
     text-align: center;
-    font-size: 2.5em; /* ここを少し大きくして元の雰囲気に近づける */
+    font-size: 2.5em;
     margin-bottom: 30px;
 }
 
@@ -199,7 +199,7 @@ main {
 }
 
 .work-category-section h3 {
-    font-size: 1.8em; /* ここを少し大きくして元の雰囲気に近づける */
+    font-size: 1.8em;
     border-bottom: 1px solid #eee;
     padding-bottom: 8px;
     margin-bottom: 20px;
@@ -209,16 +209,15 @@ main {
 
 .work-grid {
     display: grid;
-    /* PCでの作品サイズを大きくするためにminmaxの最小値を調整 */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; /* gapを調整 */
+    gap: 25px;
     justify-content: center;
 }
 
 .work-item {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* box-shadowを調整 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -226,21 +225,30 @@ main {
 }
 
 .work-item:hover {
-    transform: translateY(-8px); /* hover時の移動量を調整 */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* hover時のbox-shadowを強調 */
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* 作品の画像と動画のサイズをPCで見やすい大きさに調整 */
-.work-item video,
-.work-item img {
+.work-item video {
     width: 100%;
-    height: 220px; /* PCでの推奨高さ */
-    object-fit: cover;
+    height: 220px; /* 動画の高さは一定に */
+    object-fit: cover; /* 動画は領域を埋める */
     display: block;
 }
 
+.work-item img {
+    width: 100%;
+    height: 220px; /* 画像の高さも動画と揃える */
+    object-fit: contain; /* ★ここをcontainに変更★: 画像全体が表示されるように */
+    display: block;
+    background-color: #f0f0f0; /* contain時に余白ができる場合の背景色 */
+    padding: 10px 0; /* contain時の上下の余白を少し調整 (必要に応じて削除・変更) */
+}
+
+
 .work-info {
-    padding: 20px; /* paddingを調整 */
+    padding: 20px;
     text-align: center;
     flex-grow: 1;
     display: flex;
@@ -249,14 +257,14 @@ main {
 }
 
 .work-info h3 {
-    font-size: 1.2em; /* work-info h3を調整 */
+    font-size: 1.2em;
     margin-top: 0;
     margin-bottom: 10px;
     color: #2c3e50;
 }
 
 .work-info p {
-    font-size: 0.95em; /* work-info pを調整 */
+    font-size: 0.95em;
     color: #666;
     margin-bottom: 0;
 }
@@ -264,9 +272,9 @@ main {
 /* Aboutセクション */
 .about-section {
     background-color: #e9f5ff;
-    padding: 40px; /* paddingを調整 */
+    padding: 40px;
     border-radius: 8px;
-    margin-top: 60px; /* margin-topを調整 */
+    margin-top: 60px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -281,13 +289,13 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px; /* paddingを調整 */
-    margin-top: 60px; /* margin-topを調整 */
+    padding: 20px;
+    margin-top: 60px;
     font-size: 0.9em;
 }
 
 /* レスポンシブデザイン (スマホ向け中央配置とサイズの調整) */
-@media (max-width: 768px) { /* 閾値を600pxから768pxに広げ、より多くのタブレットにも対応 */
+@media (max-width: 768px) {
     header {
         padding: 20px 15px;
     }
@@ -313,22 +321,14 @@ footer {
         gap: 10px;
     }
     .category-item {
-        font-size: 1.2em; /* スマホでのフォントサイズ */
+        font-size: 1.2em;
         padding: 10px 15px;
         min-width: unset;
         width: calc(50% - 20px); /* 2列表示に調整 */
-        max-width: 250px; /* 広がりすぎないように */
-        margin: 5px auto; /* 中央寄せと上下の余白 */
-        box-sizing: border-box; /* paddingとborderをwidthに含める */
+        max-width: 250px;
+        margin: 5px auto;
+        box-sizing: border-box;
     }
-    /* スマホで1列にする場合は以下を有効化 */
-    /*
-    .category-item {
-        width: 90%;
-        display: block;
-        margin: 10px auto;
-    }
-    */
 
     .works-gallery h2 {
         font-size: 2em;
@@ -346,22 +346,27 @@ footer {
         margin-left: auto;
         margin-right: auto;
         display: block;
-        max-width: 90%; /* スマホでの最大幅 */
+        max-width: 90%;
         box-sizing: border-box;
     }
     .work-item video,
     .work-item img {
         height: 180px; /* スマホでの高さを調整 */
-        /* object-fit: contain; */ /* 全体を見せたい場合はこちらを検討 */
+        padding: 5px 0; /* スマホでのpaddingも調整 */
     }
+    /* スマホで画像がcontainの時に余白が出るのを少し調整 */
+    .work-item img {
+        background-color: #f8f8f8; /* スマホでは背景色をボディの色に近づける */
+    }
+
     .work-info {
         padding: 15px;
     }
     .work-info h3 {
-        font-size: 1.1em;
+        font-size: 1em;
     }
     .work-info p {
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
 
     .about-section {
@@ -383,7 +388,7 @@ footer {
 /* さらに小さい画面（例: 幅380px以下）での調整 */
 @media (max-width: 380px) {
     .category-item {
-        width: 95%; /* さらに横幅を広げる */
+        width: 95%;
         font-size: 1.1em;
         padding: 8px 15px;
     }
@@ -392,6 +397,7 @@ footer {
     }
     .work-item video,
     .work-item img {
-        height: 150px; /* さらに高さを調整 */
+        height: 150px;
+        padding: 5px 0;
     }
 }
