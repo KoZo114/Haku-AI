@@ -15,7 +15,7 @@ body {
 
 /* ヘッダーとプロフィール */
 header {
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(245,245,245,0.9));
+    background: linear-gradient(135deg, rgba(240,240,240,0.9), rgba(230,230,230,0.9));
     padding: 4rem 2rem;
     position: relative;
     overflow: hidden;
@@ -26,6 +26,17 @@ header {
     margin: 0 auto;
     position: relative;
     z-index: 1;
+}
+
+/* スマホ表示時の紹介文の中央揃え */
+@media (max-width: 768px) {
+    .profile-text {
+        text-align: center;
+    }
+    
+    .profile-text p {
+        margin-bottom: 1rem;
+    }
 }
 
 .profile-content {
