@@ -1,251 +1,105 @@
-/* グローバルスタイル */
-body {
-    font-family: 'Noto Sans JP', sans-serif;
+/* リセットスタイル */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
+    box-sizing: border-box;
+}
+
+/* 全体的なスタイル */
+body {
+    font-family: 'Noto Sans JP', sans-serif;
     line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
 }
 
-h1, h2, h3 {
-    color: #2c3e50;
-    font-weight: 700;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* ヘッダー */
+/* ヘッダーとプロフィール */
 header {
-    /* 背景を暗く、グラデーションでAI/テック感を演出 */
-    background: linear-gradient(135deg, #2c3e50 0%, #007bff 100%); /* 暗い青から明るい青へ */
-    padding: 80px 20px; /* 上下のパディングを大きくして空間を持たせる */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    color: #fff; /* ヘッダー内の文字色を白に */
-    position: relative; /* 必要に応じて背景画像などを重ねるために */
-    overflow: hidden; /* 背景アニメーションなどを使う場合の考慮 */
+    background: linear-gradient(135deg, #ffffff, #f5f5f5);
+    padding: 4rem 2rem;
 }
-/* ヘッダーに抽象的なパターンを重ねる（任意） */
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle at top left, rgba(255,255,255,0.05) 1%, transparent 30%),
-                      radial-gradient(circle at bottom right, rgba(255,255,255,0.05) 1%, transparent 30%);
-    z-index: 0;
-}
-
 
 .profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 900px; /* プロフィールセクションの最大幅を広げる */
+    max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
-    position: relative; /* 子要素のz-indexのために */
-    z-index: 1; /* ヘッダーのbefore要素の上にくるように */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
 }
 
-/* プロフィール画像上のテキスト */
-.profile-header-text {
-    margin-bottom: 40px; /* 画像との間隔を大きめに */
+@media (max-width: 768px) {
+    .profile-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 }
 
 .profile-header-text h1 {
-    font-family: 'Segoe UI', sans-serif; /* モダンなフォントを推奨 */
-    font-size: 4.8em; /* Hakuの文字を非常に大きく */
-    margin-bottom: 5px; /* Hakuとサブタイトルの間隔 */
-    color: #e0f2f7; /* 明るい水色で強調 */
-    letter-spacing: 0.08em; /* 文字間隔を広げる */
-    text-shadow: 0 0 15px rgba(0, 191, 255, 0.7), 0 0 30px rgba(0, 191, 255, 0.4); /* グロー効果 */
-    text-transform: uppercase; /* 大文字にする（Shionのように） */
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
 }
 
-.profile-header-text .subtitle {
-    font-size: 1.5em; /* サブタイトルを強調 */
-    color: #c0e0f0; /* やや落ち着いた水色 */
-    margin-bottom: 0;
-    letter-spacing: 0.05em; /* 文字間隔を少し開ける */
-    font-weight: 400; /* 太すぎないように */
+.subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
 }
-
 
 .profile-image {
-    width: 180px; /* プロフィール画像を大きく */
-    height: 180px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 40px; /* 画像と説明文の間隔 */
-    border: 6px solid #8aff8a; /* 鮮やかな緑色のボーダーでAI感を強調 */
-    box-shadow: 0 0 25px rgba(138, 255, 138, 0.6), inset 0 0 15px rgba(138, 255, 138, 0.4); /* 光る影 */
-}
-
-/* プロフィール説明文のコンテナ */
-.profile-description-container {
-    font-size: 1.1em;
-    text-align: center; /* 説明文全体を中央寄せ */
-    line-height: 1.8;
-    max-width: 750px; /* 説明文の最大幅を広げて読みやすく */
-    margin: 0 auto;
-    color: #e0f2f7; /* 明るい水色系の文字色 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .profile-description-container p {
-    margin-bottom: 1em; /* 段落間のスペース */
-    /* 背景色に合わせた強調色 */
-    color: #e0f2f7; /* 基本の段落色 */
-}
-
-.profile-description-intro {
-    font-size: 1.7em; /* 導入文をShionの引用文のように大きく強調 */
-    font-weight: 700;
-    color: #fff; /* 特に明るく */
-    margin-bottom: 1.5em;
-    line-height: 1.5;
-    text-shadow: 0 0 8px rgba(255,255,255,0.5); /* 導入文にも影 */
-}
-
-.profile-description-cta {
-    font-size: 1.4em; /* 行動喚起のメッセージをさらに強調 */
-    font-weight: bold;
-    color: #8aff8a; /* 鮮やかな緑色で目立たせる */
-    margin-top: 2em;
-    text-shadow: 0 0 10px rgba(138, 255, 138, 0.7); /* CTAにもグロー効果 */
-}
-
-/* メインコンテンツ */
-main {
-    padding: 30px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }
 
 /* カテゴリ選択セクション */
 .category-selection-section {
-    margin-top: 60px; /* ヘッダーとの間隔を空ける */
-    margin-bottom: 40px;
+    padding: 4rem 2rem;
     text-align: center;
 }
 
 .category-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
 .category-item {
-    font-size: 1.6em;
-    font-weight: bold;
-    color: #333;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    background: white;
+    color: #2c3e50;
     text-decoration: none;
-    padding: 12px 25px;
-    border: 2px solid #555;
-    border-radius: 8px;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    text-align: center;
-    cursor: pointer;
-    z-index: 1;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.category-item:hover {
-    color: #fff;
-    border-color: #007bff;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
-    transform: translateY(-3px);
+.category-item:hover, .category-item.active {
+    background: #2c3e50;
+    color: white;
+    transform: translateY(-2px);
 }
-
-/* カテゴリボタンの青くなるアクション修正 */
-.category-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #007bff;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-    z-index: -1;
-}
-
-.category-item:hover::before {
-    transform: scaleX(1);
-}
-
-/* アクティブ時のスタイルも青い背景にする */
-.category-item.active {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
-}
-.category-item.active::before {
-    transform: scaleX(1);
-}
-
-
-/* 初期ロード時のスライドインアニメーション */
-@keyframes slideIn {
-    from {
-        transform: translateX(-80px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* 各カテゴリボタンに遅延を付けてアニメーション */
-.category-item:nth-child(1) {
-    animation: slideIn 0.6s ease 0.2s forwards;
-    opacity: 0;
-}
-
-.category-item:nth-child(2) {
-    animation: slideIn 0.6s ease 0.4s forwards;
-    opacity: 0;
-}
-
-.category-item:nth-child(3) {
-    animation: slideIn 0.6s ease 0.6s forwards;
-    opacity: 0;
-}
-
 
 /* 作品ギャラリー */
 .works-gallery {
-    margin-top: 40px;
-}
-
-.works-gallery h2 {
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 30px;
+    padding: 4rem 2rem;
 }
 
 .work-category-section {
-    margin-bottom: 40px;
     display: none;
 }
 
@@ -253,214 +107,77 @@ main {
     display: block;
 }
 
-.work-category-section h3 {
-    font-size: 1.8em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #007bff;
-}
-
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
 }
 
 .work-item {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
 .work-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 
-/* 作品の画像と動画のサイズをPCで見やすい大きさに調整 */
-.work-item video {
+.work-item video, .work-item img {
     width: 100%;
-    height: 220px; /* 動画の高さは一定に */
-    object-fit: cover; /* 動画は領域を埋める */
-    display: block;
+    height: 200px;
+    object-fit: cover;
 }
-
-.work-item img {
-    width: 100%;
-    height: 220px; /* 画像の高さも動画と揃える */
-    object-fit: contain; /* 画像全体が表示されるように */
-    display: block;
-    background-color: #f0f0f0; /* contain時に余白ができる場合の背景色 */
-    padding: 10px 0; /* contain時の上下の余白を少し調整 (必要に応じて削除・変更) */
-}
-
 
 .work-info {
-    padding: 20px;
-    text-align: center;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 1.5rem;
 }
 
 .work-info h3 {
-    font-size: 1.2em;
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
     color: #2c3e50;
 }
 
 .work-info p {
-    font-size: 0.95em;
     color: #666;
-    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-/* Aboutセクション */
+/* 作品についてセクション */
 .about-section {
-    background-color: #e9f5ff;
-    padding: 40px;
-    border-radius: 8px;
-    margin-top: 60px;
+    padding: 4rem 2rem;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .about-section h2 {
-    color: #007bff;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
+    color: #2c3e50;
 }
 
 /* フッター */
 footer {
-    background-color: #333;
-    color: #fff;
+    padding: 2rem;
     text-align: center;
-    padding: 20px;
-    margin-top: 60px;
-    font-size: 0.9em;
+    background: #2c3e50;
+    color: white;
 }
 
-/* レスポンシブデザイン (スマホ向け) */
+/* レスポンシブデザイン */
 @media (max-width: 768px) {
-    header {
-        padding: 60px 15px; /* スマホでのヘッダーパディング */
+    .profile-section {
+        grid-template-columns: 1fr;
     }
-    .profile-header-text h1 {
-        font-size: 3.5em; /* スマホでのHakuの文字サイズ */
-    }
-    .profile-header-text .subtitle {
-        font-size: 1.2em;
-    }
-    .profile-image {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 30px;
-    }
-    .profile-description-container {
-        font-size: 1em;
-        padding: 0 10px;
-    }
-    .profile-description-intro {
-        font-size: 1.4em;
-        margin-bottom: 1em;
-    }
-    .profile-description-cta {
-        font-size: 1.2em;
-        margin-top: 1.5em;
-    }
-
-    .category-selection-section {
-        margin-bottom: 30px;
-    }
+    
     .category-container {
-        gap: 10px;
+        flex-direction: column;
+        align-items: center;
     }
-    .category-item {
-        font-size: 1.2em;
-        padding: 10px 15px;
-        min-width: unset;
-        width: calc(50% - 20px); /* 2列表示に調整 */
-        max-width: 250px;
-        margin: 5px auto;
-        box-sizing: border-box;
-    }
-
-    .works-gallery h2 {
-        font-size: 2em;
-        margin-bottom: 25px;
-    }
-    .work-category-section h3 {
-        font-size: 1.5em;
-        margin-bottom: 15px;
-    }
+    
     .work-grid {
-        grid-template-columns: 1fr; /* スマホでは1列表示 */
-        gap: 20px;
-    }
-    .work-item {
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        max-width: 90%;
-        box-sizing: border-box;
-    }
-    .work-item video,
-    .work-item img {
-        height: 180px; /* スマホでの高さを調整 */
-        padding: 5px 0;
-    }
-    .work-item img {
-        background-color: #f8f8f8; /* スマホでは背景色をボディの色に近づける */
-    }
-
-    .work-info {
-        padding: 15px;
-    }
-    .work-info h3 {
-        font-size: 1em;
-    }
-    .work-info p {
-        font-size: 0.85em;
-    }
-
-    .about-section {
-        padding: 30px 20px;
-        margin-top: 40px;
-    }
-    .about-section h2 {
-        font-size: 1.8em;
-    }
-    .about-section p {
-        font-size: 0.9em;
-    }
-    footer {
-        padding: 15px;
-        margin-top: 40px;
-    }
-}
-
-/* さらに小さい画面（例: 幅380px以下）での調整 */
-@media (max-width: 380px) {
-    .category-item {
-        width: 95%;
-        font-size: 1.1em;
-        padding: 8px 15px;
-    }
-    .work-item {
-        max-width: 95%;
-    }
-    .work-item video,
-    .work-item img {
-        height: 150px;
-        padding: 5px 0;
+        grid-template-columns: 1fr;
     }
 }
