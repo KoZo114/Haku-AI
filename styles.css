@@ -25,7 +25,7 @@ a:hover {
 /* ヘッダー */
 header {
     background-color: #ffffff;
-    padding: 30px 20px; /* ヘッダーのpaddingを少し小さく */
+    padding: 30px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
@@ -40,7 +40,7 @@ header {
 }
 
 .profile-image {
-    width: 120px; /* プロフィール画像を少し小さく */
+    width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
@@ -50,18 +50,18 @@ header {
 }
 
 .profile-info h1 {
-    font-size: 2.4em; /* h1を少し小さく */
+    font-size: 2.4em;
     margin-bottom: 5px;
 }
 
 .profile-info .subtitle {
-    font-size: 1.1em; /* subtitleを少し小さく */
+    font-size: 1.1em;
     color: #666;
     margin-bottom: 15px;
 }
 
 .profile-description {
-    font-size: 1em; /* 説明文を少し小さく */
+    font-size: 1em;
     text-align: left;
     line-height: 1.7;
 }
@@ -72,14 +72,14 @@ header {
 
 /* メインコンテンツ */
 main {
-    padding: 30px 20px; /* mainのpaddingを少し小さく */
+    padding: 30px 20px;
     max-width: 1000px;
     margin: 0 auto;
 }
 
 /* カテゴリ選択セクション */
 .category-selection-section {
-    margin-bottom: 40px; /* margin-bottomを少し小さく */
+    margin-bottom: 40px;
     text-align: center;
 }
 
@@ -87,63 +87,72 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px; /* gapを少し小さく */
-    margin-top: 20px; /* margin-topを少し小さく */
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .category-item {
-    font-size: 1.6em; /* category-itemのフォントサイズを少し小さく */
+    font-size: 1.6em;
     font-weight: bold;
     color: #333;
     text-decoration: none;
-    padding: 12px 25px; /* paddingを少し小さく */
+    padding: 12px 25px;
     border: 2px solid #555;
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* これが重要 */
     background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* box-shadowを少し控えめに */
-    min-width: 200px; /* min-widthを小さく */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
     text-align: center;
     cursor: pointer;
+    z-index: 1; /* コンテンツが背景の上にくるように */
 }
 
 .category-item:hover {
-    color: #fff;
-    border-color: #007bff;
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* hover時のbox-shadowを調整 */
-    transform: translateY(-3px); /* hover時の移動量を少し小さく */
-}
-
-.category-item.active {
-    background-color: #007bff;
-    color: #fff;
+    color: #fff; /* ホバー時はテキストを白に */
     border-color: #007bff;
     box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+    transform: translateY(-3px);
 }
 
-/* ホバー時の背景アニメーション */
+/* カテゴリボタンの青くなるアクション修正 */
 .category-item::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, #007bff, transparent);
-    transition: all 0.4s ease;
-    z-index: -1;
+    background-color: #007bff; /* 単色の背景 */
+    transform: scaleX(0); /* 横方向のスケールを0から開始 */
+    transform-origin: left; /* 左を起点に拡大 */
+    transition: transform 0.4s ease;
+    z-index: -1; /* テキストの後ろに配置 */
 }
 
 .category-item:hover::before {
-    left: 0;
+    transform: scaleX(1); /* ホバー時に横方向に拡大して埋める */
 }
+
+/* アクティブ時のスタイルも青い背景にする */
+.category-item.active {
+    background-color: #007bff; /* アクティブ時の背景色 */
+    color: #fff; /* アクティブ時のテキスト色 */
+    border-color: #007bff; /* アクティブ時のボーダー色 */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+/* アクティブ時は::beforeアニメーションが邪魔しないように調整 */
+.category-item.active::before {
+    transform: scaleX(1); /* アクティブ時は常に背景を表示 */
+}
+
 
 /* 初期ロード時のスライドインアニメーション */
 @keyframes slideIn {
     from {
-        transform: translateX(-80px); /* スライドインの距離を少し短く */
+        transform: translateX(-80px);
         opacity: 0;
     }
     to {
@@ -154,7 +163,7 @@ main {
 
 /* 各カテゴリボタンに遅延を付けてアニメーション */
 .category-item:nth-child(1) {
-    animation: slideIn 0.6s ease 0.2s forwards; /* アニメーション時間を短縮 */
+    animation: slideIn 0.6s ease 0.2s forwards;
     opacity: 0;
 }
 
@@ -171,44 +180,45 @@ main {
 
 /* 作品ギャラリー */
 .works-gallery {
-    margin-top: 40px; /* margin-topを少し小さく */
+    margin-top: 40px;
 }
 
 .works-gallery h2 {
     text-align: center;
-    font-size: 2.2em; /* h2を少し小さく */
-    margin-bottom: 30px; /* margin-bottomを少し小さく */
+    font-size: 2.5em; /* ここを少し大きくして元の雰囲気に近づける */
+    margin-bottom: 30px;
 }
 
 .work-category-section {
-    margin-bottom: 40px; /* margin-bottomを少し小さく */
-    display: none; /* 初期状態では非表示 */
+    margin-bottom: 40px;
+    display: none;
 }
 
 .work-category-section.active {
-    display: block; /* activeクラスが付いたら表示 */
+    display: block;
 }
 
 .work-category-section h3 {
-    font-size: 1.6em; /* h3を少し小さく */
-    border-bottom: 1px solid #eee; /* ボーダーを少し細く */
-    padding-bottom: 8px; /* padding-bottomを少し小さく */
-    margin-bottom: 20px; /* margin-bottomを少し小さく */
+    font-size: 1.8em; /* ここを少し大きくして元の雰囲気に近づける */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
     text-align: center;
     color: #007bff;
 }
 
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 最小幅を小さく */
-    gap: 20px; /* gapを少し小さく */
+    /* PCでの作品サイズを大きくするためにminmaxの最小値を調整 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* gapを調整 */
     justify-content: center;
 }
 
 .work-item {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* box-shadowを少し控えめに */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* box-shadowを調整 */
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -216,20 +226,21 @@ main {
 }
 
 .work-item:hover {
-    transform: translateY(-5px); /* hover時の移動量を少し小さく */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* hover時のbox-shadowを調整 */
+    transform: translateY(-8px); /* hover時の移動量を調整 */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* hover時のbox-shadowを強調 */
 }
 
+/* 作品の画像と動画のサイズをPCで見やすい大きさに調整 */
 .work-item video,
 .work-item img {
     width: 100%;
-    height: 150px; /* 高さを小さく */
+    height: 220px; /* PCでの推奨高さ */
     object-fit: cover;
     display: block;
 }
 
 .work-info {
-    padding: 15px; /* paddingを小さく */
+    padding: 20px; /* paddingを調整 */
     text-align: center;
     flex-grow: 1;
     display: flex;
@@ -238,14 +249,14 @@ main {
 }
 
 .work-info h3 {
-    font-size: 1.1em; /* work-info h3を小さく */
+    font-size: 1.2em; /* work-info h3を調整 */
     margin-top: 0;
-    margin-bottom: 8px; /* margin-bottomを小さく */
+    margin-bottom: 10px;
     color: #2c3e50;
 }
 
 .work-info p {
-    font-size: 0.9em; /* work-info pを小さく */
+    font-size: 0.95em; /* work-info pを調整 */
     color: #666;
     margin-bottom: 0;
 }
@@ -253,16 +264,16 @@ main {
 /* Aboutセクション */
 .about-section {
     background-color: #e9f5ff;
-    padding: 30px; /* paddingを小さく */
+    padding: 40px; /* paddingを調整 */
     border-radius: 8px;
-    margin-top: 40px; /* margin-topを小さく */
+    margin-top: 60px; /* margin-topを調整 */
     text-align: center;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05); /* box-shadowを少し控えめに */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .about-section h2 {
     color: #007bff;
-    margin-bottom: 15px; /* margin-bottomを小さく */
+    margin-bottom: 20px;
 }
 
 /* フッター */
@@ -270,72 +281,117 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 15px; /* paddingを小さく */
-    margin-top: 40px; /* margin-topを小さく */
-    font-size: 0.8em; /* font-sizeを小さく */
+    padding: 20px; /* paddingを調整 */
+    margin-top: 60px; /* margin-topを調整 */
+    font-size: 0.9em;
 }
 
 /* レスポンシブデザイン (スマホ向け中央配置とサイズの調整) */
-@media (max-width: 600px) {
-    .profile-info h1 {
-        font-size: 2em;
+@media (max-width: 768px) { /* 閾値を600pxから768pxに広げ、より多くのタブレットにも対応 */
+    header {
+        padding: 20px 15px;
     }
-
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    .profile-info h1 {
+        font-size: 2.0em;
+    }
     .profile-info .subtitle {
         font-size: 0.9em;
     }
-
     .profile-description {
         font-size: 0.85em;
+        padding: 0 10px;
     }
 
+    .category-selection-section {
+        margin-bottom: 30px;
+    }
+    .category-container {
+        gap: 10px;
+    }
     .category-item {
-        font-size: 1.3em;
-        padding: 10px 20px;
+        font-size: 1.2em; /* スマホでのフォントサイズ */
+        padding: 10px 15px;
         min-width: unset;
-        width: 90%; /* スマホで横幅いっぱいに近づける */
-        margin-left: auto;
-        margin-right: auto;
-        display: block; /* 中央配置のためにblock要素にする */
+        width: calc(50% - 20px); /* 2列表示に調整 */
+        max-width: 250px; /* 広がりすぎないように */
+        margin: 5px auto; /* 中央寄せと上下の余白 */
+        box-sizing: border-box; /* paddingとborderをwidthに含める */
     }
+    /* スマホで1列にする場合は以下を有効化 */
+    /*
+    .category-item {
+        width: 90%;
+        display: block;
+        margin: 10px auto;
+    }
+    */
 
+    .works-gallery h2 {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+    .work-category-section h3 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
     .work-grid {
         grid-template-columns: 1fr; /* スマホでは1列表示 */
+        gap: 20px;
     }
-
     .work-item {
         margin-left: auto;
         margin-right: auto;
-        display: block; /* 中央配置のためにblock要素にする */
-        max-width: 90%; /* 横幅が広がりすぎないように */
+        display: block;
+        max-width: 90%; /* スマホでの最大幅 */
+        box-sizing: border-box;
     }
-
     .work-item video,
     .work-item img {
-        height: auto; /* スマホでは自動調整させる */
+        height: 180px; /* スマホでの高さを調整 */
+        /* object-fit: contain; */ /* 全体を見せたい場合はこちらを検討 */
     }
-
     .work-info {
         padding: 15px;
     }
-
     .work-info h3 {
-        font-size: 1em;
+        font-size: 1.1em;
     }
-
     .work-info p {
-        font-size: 0.85em;
+        font-size: 0.9em;
     }
 
     .about-section {
-        padding: 20px;
+        padding: 30px 20px;
+        margin-top: 40px;
     }
-
     .about-section h2 {
         font-size: 1.8em;
     }
-
     .about-section p {
         font-size: 0.9em;
+    }
+    footer {
+        padding: 15px;
+        margin-top: 40px;
+    }
+}
+
+/* さらに小さい画面（例: 幅380px以下）での調整 */
+@media (max-width: 380px) {
+    .category-item {
+        width: 95%; /* さらに横幅を広げる */
+        font-size: 1.1em;
+        padding: 8px 15px;
+    }
+    .work-item {
+        max-width: 95%;
+    }
+    .work-item video,
+    .work-item img {
+        height: 150px; /* さらに高さを調整 */
     }
 }
