@@ -24,48 +24,72 @@ a:hover {
 
 /* ヘッダー */
 header {
-    background-color: #ffffff;
-    padding: 40px 20px; /* 少し大きめに */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* 背景を暗く、グラデーションでAI/テック感を演出 */
+    background: linear-gradient(135deg, #2c3e50 0%, #007bff 100%); /* 暗い青から明るい青へ */
+    padding: 80px 20px; /* 上下のパディングを大きくして空間を持たせる */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    color: #fff; /* ヘッダー内の文字色を白に */
+    position: relative; /* 必要に応じて背景画像などを重ねるために */
+    overflow: hidden; /* 背景アニメーションなどを使う場合の考慮 */
 }
+/* ヘッダーに抽象的なパターンを重ねる（任意） */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at top left, rgba(255,255,255,0.05) 1%, transparent 30%),
+                      radial-gradient(circle at bottom right, rgba(255,255,255,0.05) 1%, transparent 30%);
+    z-index: 0;
+}
+
 
 .profile-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px; /* プロフィール全体の最大幅 */
+    max-width: 900px; /* プロフィールセクションの最大幅を広げる */
     margin: 0 auto;
     text-align: center;
+    position: relative; /* 子要素のz-indexのために */
+    z-index: 1; /* ヘッダーのbefore要素の上にくるように */
 }
 
 /* プロフィール画像上のテキスト */
 .profile-header-text {
-    margin-bottom: 30px; /* 画像との間隔 */
+    margin-bottom: 40px; /* 画像との間隔を大きめに */
 }
 
 .profile-header-text h1 {
-    font-size: 3.5em; /* Hakuの文字を大きく */
-    margin-bottom: 8px; /* Hakuとサブタイトルの間隔 */
-    color: #007bff; /* Hakuの色を強調 */
-    letter-spacing: 0.05em; /* 文字間隔を少し開ける */
+    font-family: 'Segoe UI', sans-serif; /* モダンなフォントを推奨 */
+    font-size: 4.8em; /* Hakuの文字を非常に大きく */
+    margin-bottom: 5px; /* Hakuとサブタイトルの間隔 */
+    color: #e0f2f7; /* 明るい水色で強調 */
+    letter-spacing: 0.08em; /* 文字間隔を広げる */
+    text-shadow: 0 0 15px rgba(0, 191, 255, 0.7), 0 0 30px rgba(0, 191, 255, 0.4); /* グロー効果 */
+    text-transform: uppercase; /* 大文字にする（Shionのように） */
 }
 
 .profile-header-text .subtitle {
-    font-size: 1.3em; /* サブタイトルを強調 */
-    color: #555;
+    font-size: 1.5em; /* サブタイトルを強調 */
+    color: #c0e0f0; /* やや落ち着いた水色 */
     margin-bottom: 0;
+    letter-spacing: 0.05em; /* 文字間隔を少し開ける */
+    font-weight: 400; /* 太すぎないように */
 }
 
 
 .profile-image {
-    width: 150px; /* プロフィール画像を元のサイズに戻すか、やや大きく */
-    height: 150px;
+    width: 180px; /* プロフィール画像を大きく */
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 30px; /* 画像と説明文の間隔 */
-    border: 5px solid #007bff; /* ボーダーを強調 */
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.3); /* 影を強調 */
+    margin-bottom: 40px; /* 画像と説明文の間隔 */
+    border: 6px solid #8aff8a; /* 鮮やかな緑色のボーダーでAI感を強調 */
+    box-shadow: 0 0 25px rgba(138, 255, 138, 0.6), inset 0 0 15px rgba(138, 255, 138, 0.4); /* 光る影 */
 }
 
 /* プロフィール説明文のコンテナ */
@@ -73,24 +97,32 @@ header {
     font-size: 1.1em;
     text-align: center; /* 説明文全体を中央寄せ */
     line-height: 1.8;
-    max-width: 700px; /* 説明文の最大幅を制限して読みやすく */
+    max-width: 750px; /* 説明文の最大幅を広げて読みやすく */
     margin: 0 auto;
+    color: #e0f2f7; /* 明るい水色系の文字色 */
 }
 
 .profile-description-container p {
     margin-bottom: 1em; /* 段落間のスペース */
+    /* 背景色に合わせた強調色 */
+    color: #e0f2f7; /* 基本の段落色 */
 }
 
 .profile-description-intro {
-    font-weight: bold; /* 導入文を強調 */
-    color: #444;
+    font-size: 1.7em; /* 導入文をShionの引用文のように大きく強調 */
+    font-weight: 700;
+    color: #fff; /* 特に明るく */
+    margin-bottom: 1.5em;
+    line-height: 1.5;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5); /* 導入文にも影 */
 }
 
 .profile-description-cta {
-    font-size: 1.15em; /* 行動喚起のメッセージを強調 */
+    font-size: 1.4em; /* 行動喚起のメッセージをさらに強調 */
     font-weight: bold;
-    color: #007bff;
-    margin-top: 1.5em;
+    color: #8aff8a; /* 鮮やかな緑色で目立たせる */
+    margin-top: 2em;
+    text-shadow: 0 0 10px rgba(138, 255, 138, 0.7); /* CTAにもグロー効果 */
 }
 
 /* メインコンテンツ */
@@ -102,6 +134,7 @@ main {
 
 /* カテゴリ選択セクション */
 .category-selection-section {
+    margin-top: 60px; /* ヘッダーとの間隔を空ける */
     margin-bottom: 40px;
     text-align: center;
 }
@@ -231,7 +264,6 @@ main {
 
 .work-grid {
     display: grid;
-    /* PCでの作品サイズを大きくするためにminmaxの最小値を調整 */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     justify-content: center;
@@ -317,29 +349,33 @@ footer {
     font-size: 0.9em;
 }
 
-/* レスポンシブデザイン (スマホ向け中央配置とサイズの調整) */
+/* レスポンシブデザイン (スマホ向け) */
 @media (max-width: 768px) {
     header {
-        padding: 20px 15px;
+        padding: 60px 15px; /* スマホでのヘッダーパディング */
     }
-    /* プロフィールセクションの調整 */
     .profile-header-text h1 {
-        font-size: 2.5em; /* スマホでのHakuの文字サイズ */
+        font-size: 3.5em; /* スマホでのHakuの文字サイズ */
     }
     .profile-header-text .subtitle {
-        font-size: 1.1em;
+        font-size: 1.2em;
     }
     .profile-image {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 20px;
+        width: 150px;
+        height: 150px;
+        margin-bottom: 30px;
     }
     .profile-description-container {
-        font-size: 0.95em;
+        font-size: 1em;
         padding: 0 10px;
     }
+    .profile-description-intro {
+        font-size: 1.4em;
+        margin-bottom: 1em;
+    }
     .profile-description-cta {
-        font-size: 1.05em;
+        font-size: 1.2em;
+        margin-top: 1.5em;
     }
 
     .category-selection-section {
