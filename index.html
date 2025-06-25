@@ -39,8 +39,7 @@
                 <h3>AI動画作品</h3>
                 <div class="work-grid">
                     <div class="work-item">
-                        <video controls>
-                            <source src="video.mp4" type="video/mp4">
+                        <video controls poster="hakuyubi.PNG"> <source src="video.mp4" type="video/mp4">
                             お使いのブラウザはビデオをサポートしていません。
                         </video>
                         <div class="work-info">
@@ -49,8 +48,7 @@
                         </div>
                     </div>
                     <div class="work-item">
-                        <video controls>
-                            <source src="1080p.MP4" type="video/mp4">
+                        <video controls poster="IMG_6508.jpg"> <source src="1080p.MP4" type="video/mp4">
                             お使いのブラウザはビデオをサポートしていません。
                         </video>
                         <div class="work-info">
@@ -59,8 +57,7 @@
                         </div>
                     </div>
                     <div class="work-item">
-                        <video controls>
-                            <source src="dennsya.mp4" type="video/mp4">
+                        <video controls poster="dennsya.JPG"> <source src="dennsya.mp4" type="video/mp4">
                             お使いのブラウザはビデオをサポートしていません。
                         </video>
                         <div class="work-info">
@@ -107,7 +104,7 @@
                             <p>AIと協力して開発した、直感的な操作が可能なオーディオプレイヤー。Web技術を学びながら作りました。</p>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </section>
 
@@ -126,7 +123,6 @@
             const categoryItems = document.querySelectorAll('.category-item');
             const workCategorySections = document.querySelectorAll('.work-category-section');
 
-            // ページロード時に、最初のカテゴリの作品を表示する
             const initialActiveCategory = document.querySelector('.category-item.active');
             if (initialActiveCategory) {
                 const targetId = initialActiveCategory.dataset.category;
@@ -138,21 +134,17 @@
 
             categoryItems.forEach(item => {
                 item.addEventListener('click', (event) => {
-                    event.preventDefault(); // デフォルトのリンク動作を防止
+                    event.preventDefault();
 
-                    // 現在アクティブなカテゴリからactiveクラスを削除
                     categoryItems.forEach(cat => cat.classList.remove('active'));
                     workCategorySections.forEach(sec => sec.classList.remove('active'));
 
-                    // クリックされたカテゴリにactiveクラスを追加
                     item.classList.add('active');
 
-                    // 対応する作品セクションを表示
                     const targetCategory = item.dataset.category;
                     const targetSection = document.querySelector(`[data-category-id="${targetCategory}"]`);
                     if (targetSection) {
                         targetSection.classList.add('active');
-                        // スムーズスクロールで作品セクションへ移動
                         targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 });
