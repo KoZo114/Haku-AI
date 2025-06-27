@@ -10,15 +10,16 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f5f5f5;
+    background-color: #f0f0f5; /* 薄い灰色 */
 }
 
 /* ヘッダーとプロフィール */
 header {
-    background: linear-gradient(135deg, rgba(240,240,240,0.9), rgba(230,230,230,0.9));
+    background: linear-gradient(135deg, #e0e0eb, #f0f0f5); /* 薄紫から薄い灰色へのグラデーション */
     padding: 4rem 2rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .profile-section {
@@ -45,28 +46,35 @@ header {
     gap: 3rem;
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(44,62,80,0.95));
+    background: linear-gradient(180deg, #ffffff, #f8f8fc); /* 白からごく薄い紫へのグラデーション */
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 /* テキストの可読性向上 */
 .profile-text {
-    background: linear-gradient(180deg, rgba(44,62,80,0.95), rgba(255,255,255,0.95));
+    background: transparent; /* 背景を透明に */
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
 /* タイトルとサブタイトルのスタイル */
 .profile-text h1 {
-    color: #3498db;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #4a4a6a; /* 濃いめの薄紫 */
+    position: relative;
+    z-index: 2;
+    text-shadow: none; /* シャドウを削除 */
 }
 
-.profile-text .subtitle {
-    color: white;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+.subtitle {
+    font-size: 1.5rem;
+    color: #8888aa; /* やや薄い紫 */
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: none; /* シャドウを削除 */
 }
 
 @media (max-width: 768px) {
@@ -76,29 +84,13 @@ header {
     }
 }
 
-.profile-text h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-    position: relative;
-    z-index: 2;
-}
-
-.subtitle {
-    font-size: 1.5rem;
-    color: #666;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 2;
-}
-
 .profile-image-container {
     position: relative;
     width: 300px;
     height: 300px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -117,29 +109,30 @@ header {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.8;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    background: transparent; /* 背景を透明に */
+    padding: 0; /* パディングを削除 */
+    border-radius: 0; /* ボーダーラディウスを削除 */
+    box-shadow: none; /* シャドウを削除 */
     position: relative;
     z-index: 2;
+    color: #555; /* 濃いめの灰色 */
 }
 
 .profile-description-intro {
     margin-top: 2rem;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    background: transparent; /* 背景を透明に */
+    padding: 0; /* パディングを削除 */
+    border-radius: 0; /* ボーダーラディウスを削除 */
+    box-shadow: none; /* シャドウを削除 */
 }
 
 .profile-description-cta {
-    color: #2c3e50;
+    color: #4a4a6a; /* 濃いめの薄紫 */
     font-weight: bold;
-    background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
+    background: linear-gradient(90deg, #f0f0f5, #e0e0eb); /* 薄い灰色から薄紫へのグラデーション */
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     text-align: center;
 }
 
@@ -147,6 +140,13 @@ header {
 .category-selection-section {
     padding: 4rem 2rem;
     text-align: center;
+    background-color: #f8f8fc; /* ごく薄い紫 */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.category-selection-section h2 {
+    color: #4a4a6a; /* 濃いめの薄紫 */
+    margin-bottom: 2rem;
 }
 
 .category-container {
@@ -159,22 +159,26 @@ header {
 .category-item {
     padding: 1rem 2rem;
     border-radius: 25px;
-    background: white;
-    color: #2c3e50;
+    background: #ffffff; /* 白 */
+    color: #6a6a8a; /* 薄紫 */
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0eb; /* 薄い紫のボーダー */
 }
 
 .category-item:hover, .category-item.active {
-    background: #2c3e50;
+    background: linear-gradient(45deg, #e0e0eb, #c0c0d0); /* 薄紫から灰色へのグラデーション */
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    border-color: transparent;
 }
 
 /* 作品ギャラリー */
 .works-gallery {
     padding: 4rem 2rem;
+    background-color: #f0f0f5; /* 薄い灰色 */
 }
 
 .work-category-section {
@@ -185,6 +189,12 @@ header {
     display: block;
 }
 
+.work-category-section h3 {
+    color: #4a4a6a; /* 濃いめの薄紫 */
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
 .work-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -193,15 +203,17 @@ header {
 }
 
 .work-item {
-    background: white;
+    background: #ffffff; /* 白 */
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    border: 1px solid #e0e0eb; /* 薄い紫のボーダー */
 }
 
 .work-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .work-item video, .work-item img {
@@ -216,32 +228,41 @@ header {
 
 .work-info h3 {
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: #4a4a6a; /* 濃いめの薄紫 */
 }
 
 .work-info p {
-    color: #666;
+    color: #666; /* 灰色 */
     font-size: 0.9rem;
     line-height: 1.5;
 }
 
-/* 作品についてセクション */
+/* 作品について���クション */
 .about-section {
     padding: 4rem 2rem;
     text-align: center;
+    background-color: #e0e0eb; /* 薄紫 */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .about-section h2 {
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: #4a4a6a; /* 濃いめの薄紫 */
+}
+
+.about-section p {
+    color: #555; /* 濃いめの灰色 */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* フッター */
 footer {
     padding: 2rem;
     text-align: center;
-    background: #2c3e50;
+    background: linear-gradient(90deg, #c0c0d0, #a0a0b0); /* 灰色系のグラデーション */
     color: white;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* レスポンシブデザイン */
@@ -252,12 +273,30 @@ footer {
     }
     
     .profile-content {
-        max-width: 80%;
-        margin-left: 1rem;
+        max-width: 90%; /* スマホでの幅を調整 */
+        margin-left: auto;
         margin-right: auto;
-        padding: 2rem;
+        padding: 1.5rem;
     }
     
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 2rem auto; /* 中央揃えと下マージン */
+    }
+
+    .profile-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .profile-text p {
+        font-size: 1rem;
+    }
+
     .category-container {
         flex-direction: column;
         align-items: center;
