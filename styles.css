@@ -8,14 +8,14 @@
 /* 全体的なスタイル */
 body {
     font-family: 'Noto Sans JP', sans-serif;
-    line-height: 1.8;
-    color: #f5f5f5;
-    background-color: #1a1a1a;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
 }
 
 /* --- プロフィールセクション --- */
 .profile-header {
-    position: relative;
+    position: relative; /* 星エフェクトの基準 */
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -23,15 +23,34 @@ body {
     align-items: center;
     padding: 2rem;
     overflow: hidden;
-    background-color: #000;
+    background-color: #000; /* 背景を黒に */
 }
+
+/* プロフィール背景にだけ静的な星を追加 */
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(1px 1px at 30px 60px, #eee, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 150px 120px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 120px 180px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 250px 250px;
+    z-index: 0;
+}
+
 
 .profile-container {
     position: relative;
     max-width: 800px;
     width: 100%;
     text-align: center;
-    z-index: 2;
+    z-index: 2; /* 星エフェクトより手前に */
 }
 
 .profile-background-image {
@@ -41,21 +60,22 @@ body {
     transform: translate(-50%, -50%);
     width: 500px;
     height: 500px;
-    z-index: -1;
+    z-index: -1; /* テキストの背後に */
 }
 
 .profile-background-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.2;
-    filter: grayscale(50%);
+    opacity: 0.2; /* 画像を薄く表示 */
+    filter: grayscale(50%); /* 色味を少し抑える */
 }
 
 .profile-text-content {
     background: rgba(0, 0, 0, 0.3);
     padding: 2rem;
     border-radius: 15px;
+    color: #f5f5f5; /* プロフィール内の文字を白系に */
 }
 
 .profile-text-content h1 {
@@ -104,11 +124,10 @@ body {
 .category-selection-section {
     padding: 4rem 2rem;
     text-align: center;
-    background-color: #2c3e50;
 }
 
 .category-selection-section h2 {
-    color: #fff;
+    color: #2c3e50;
     margin-bottom: 2rem;
 }
 
@@ -132,7 +151,7 @@ body {
 }
 
 .category-item:hover, .category-item.active {
-    background: #3498db;
+    background: #2c3e50;
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -141,7 +160,6 @@ body {
 /* --- 作品ギャラリー --- */
 .works-gallery {
     padding: 4rem 2rem;
-    background-color: #1a1a1a;
 }
 
 .work-category-section {
@@ -155,7 +173,7 @@ body {
 .work-category-section h3 {
     text-align: center;
     font-size: 2rem;
-    color: #fff;
+    color: #2c3e50;
     margin-bottom: 3rem;
 }
 
@@ -166,17 +184,17 @@ body {
 }
 
 .work-item {
-    background: #252525;
+    background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-    border: 1px solid #444;
+    border: 1px solid #eee;
 }
 
 .work-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 .work-item video, .work-item img {
@@ -192,11 +210,11 @@ body {
 
 .work-info h3 {
     margin-bottom: 0.5rem;
-    color: #3498db;
+    color: #2c3e50;
 }
 
 .work-info p {
-    color: #ccc;
+    color: #666;
     font-size: 0.9rem;
     line-height: 1.6;
 }
@@ -205,80 +223,17 @@ body {
 .about-section {
     padding: 4rem 2rem;
     text-align: center;
-    background-color: #2c3e50;
 }
 
 .about-section h2 {
     margin-bottom: 2rem;
-    color: #fff;
+    color: #2c3e50;
 }
 
 /* --- フッター --- */
 footer {
     padding: 2rem;
     text-align: center;
-    background: #111;
-    color: #888;
-}
-
-/* --- 星空アニメーション --- */
-@keyframes animStar {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-2000px);
-    }
-}
-
-#stars, #stars2, #stars3 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 0;
-}
-
-/* box-shadowで星を生成 */
-#stars {
-    background: transparent;
-    animation: animStar 50s linear infinite;
-    box-shadow: 
-        1692px 1358px #FFF, 1738px 1018px #FFF, 1070px 1860px #FFF, 
-        836px 148px #FFF, 1632px 1032px #FFF, 714px 442px #FFF, 
-        1266px 1074px #FFF, 1374px 1794px #FFF, 1380px 1004px #FFF, 
-        420px 1832px #FFF, 1424px 1140px #FFF, 188px 1814px #FFF, 
-        1276px 1968px #FFF, 84px 1174px #FFF, 1554px 156px #FFF, 
-        66px 1414px #FFF, 148px 1994px #FFF, 1124px 1904px #FFF, 
-        1294px 784px #FFF, 822px 1318px #FFF, 1670px 1196px #FFF, 
-        1756px 1948px #FFF, 1794px 1146px #FFF, 1602px 174px #FFF, 
-        1502px 1172px #FFF, 124px 1990px #FFF;
-}
-
-#stars2 {
-    background: transparent;
-    animation: animStar 100s linear infinite;
-    box-shadow: 
-        414px 1668px #FFF, 128px 1238px #FFF, 382px 1486px #FFF, 
-        1338px 1730px #FFF, 712px 1888px #FFF, 1386px 876px #FFF, 
-        1404px 104px #FFF, 114px 1066px #FFF, 1798px 902px #FFF, 
-        1636px 472px #FFF, 1060px 728px #FFF, 1822px 1866px #FFF, 
-        1804px 1184px #FFF, 792px 1680px #FFF, 824px 406px #FFF, 
-        506px 1814px #FFF, 1222px 1344px #FFF, 1332px 1478px #FFF, 
-        642px 796px #FFF, 324px 130px #FFF, 1856px 1412px #FFF, 
-        1444px 1746px #FFF, 502px 78px #FFF, 480px 702px #FFF;
-}
-
-#stars3 {
-    background: transparent;
-    animation: animStar 150s linear infinite;
-    box-shadow: 
-        754px 1176px #FFF, 182px 1030px #FFF, 1720px 1404px #FFF, 
-        1064px 898px #FFF, 1324px 122px #FFF, 1242px 1582px #FFF, 
-        690px 1316px #FFF, 350px 1486px #FFF, 436px 1106px #FFF, 
-        1796px 1086px #FFF, 246px 184px #FFF, 1698px 1860px #FFF;
+    background: #2c3e50;
+    color: white;
 }
