@@ -68,7 +68,7 @@ body {
     height: 100%;
     object-fit: cover;
     opacity: 0.2; /* 画像を薄く表示 */
-    filter: grayscale(30%); /* 色味を少し抑える */
+    filter: grayscale(10%); /* 色味を少し抑える */
 }
 
 .profile-text-content {
