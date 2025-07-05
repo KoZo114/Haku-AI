@@ -43,7 +43,7 @@ body {
     background-size: 250px 250px;
     z-index: 0;
     /* ↓ この一行を追加してアニメーションを適用 */
-    animation: twinkle 3s linear infinite;
+    animation: glow-and-grow 3s linear infinite;
 }
 
 
@@ -240,12 +240,14 @@ footer {
     color: white;
 }
 
-/* --- 星のまたたきアニメーション --- */
-@keyframes twinkle {
+/* --- 星のまたたきと拡大アニメーション --- */
+@keyframes glow-and-grow {
   0%, 100% {
     opacity: 0.3;
+    transform: scale(1); /* 元のサイズ */
   }
   50% {
     opacity: 1;
+    transform: scale(1.5); /* 1.5倍のサイズ */
   }
 }
