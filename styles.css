@@ -1,256 +1,457 @@
-/* リセットスタイル */
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 全体的なスタイル */
+:root {
+    /* Color Variables */
+    --background: hsl(0, 0%, 3%);
+    --foreground: hsl(0, 0%, 98%);
+    --card: hsl(240, 10%, 8%);
+    --card-foreground: hsl(0, 0%, 95%);
+    --primary: hsl(266, 100%, 70%);
+    --primary-foreground: hsl(0, 0%, 100%);
+    --primary-glow: hsl(280, 100%, 80%);
+    --secondary: hsl(240, 15%, 15%);
+    --secondary-foreground: hsl(0, 0%, 90%);
+    --accent: hsl(200, 100%, 60%);
+    --accent-foreground: hsl(0, 0%, 100%);
+    --border: hsl(240, 10%, 18%);
+    --muted: hsl(240, 8%, 12%);
+    --muted-foreground: hsl(240, 5%, 64%);
+    
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, 
+        hsl(266, 100%, 70%) 0%, 
+        hsl(280, 100%, 80%) 25%, 
+        hsl(200, 100%, 60%) 75%, 
+        hsl(280, 100%, 80%) 100%);
+    --gradient-hero: linear-gradient(135deg, 
+        hsl(240, 10%, 8%) 0%, 
+        hsl(240, 15%, 15%) 100%);
+    --gradient-card: linear-gradient(145deg, 
+        hsl(240, 10%, 8%) 0%, 
+        hsl(240, 15%, 12%) 100%);
+    
+    /* Shadows */
+    --shadow-cosmic: 0 20px 60px -12px hsla(266, 100%, 70%, 0.4);
+    --shadow-glow: 0 0 40px hsla(266, 100%, 70%, 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsla(0, 0%, 0%, 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 body {
     font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    overflow-x: hidden;
 }
 
-/* --- プロフィールセクション --- */
-.profile-header {
-    position: relative; /* 星エフェクトの基準 */
-    width: 100%;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.hero-section {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 2rem;
+    justify-content: center;
+    position: relative;
     overflow: hidden;
-    background-color: #000; /* 背景を黒に */
+    background: var(--gradient-hero);
 }
 
-/* --- 流れる星のアニメーション定義 --- */
-@keyframes flow-stars {
-    0% {
-        transform: translate(0, -100vh) scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translate(0, 100vh) scale(1);
-        opacity: 0;
-    }
+.particle-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-/* プロフィール背景に流れる星を追加 */
-.profile-header::before {
+.particle-bg::before {
     content: '';
     position: absolute;
     top: -50%;
-    left: 0;
-    width: 100%;
+    left: -50%;
+    width: 200%;
     height: 200%;
     background-image:
-        radial-gradient(2px 2px at 10% 20%, #eee, rgba(0,0,0,0)),
-        radial-gradient(3px 3px at 40% 30%, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 80% 40%, #ddd, rgba(0,0,0,0)),
-        radial-gradient(3px 3px at 90% 60%, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 20% 80%, #eee, rgba(0,0,0,0));
+        radial-gradient(2px 2px at 10% 20%, var(--primary-glow), rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 40% 30%, var(--primary), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 80% 40%, var(--accent), rgba(0,0,0,0)),
+        radial-gradient(3px 3px at 90% 60%, var(--primary-glow), rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 20% 80%, var(--primary), rgba(0,0,0,0));
     background-repeat: repeat;
-    background-size: 250px 250px;
-    z-index: 0;
-    animation: flow-stars 15s linear infinite; /* 流れる星のアニメーションを適用 */
+    background-size: 400px 400px;
+    animation: float-particles 20s linear infinite;
+    opacity: 0.6;
 }
 
+@keyframes float-particles {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(30px, -30px) rotate(120deg);
+    }
+    66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+}
 
 .profile-container {
-    position: relative;
     max-width: 800px;
-    width: 100%;
-    text-align: center;
-    z-index: 2; /* 星エフェクトより手前に */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
-.profile-background-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    z-index: -1; /* テキストの背後に */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary);
+    box-shadow: var(--shadow-glow);
+    animation: pulse-glow 3s ease-in-out infinite;
 }
 
-.profile-background-image img {
+.profile-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.4; /* 画像の濃さを調整 */
-    filter: grayscale(0%); /* 0%で元の色になります */
 }
 
-.profile-text-content {
-    background: rgba(0, 0, 0, 0.3);
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px hsla(266, 100%, 70%, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 40px hsla(266, 100%, 70%, 0.6), 
+                    0 0 60px hsla(266, 100%, 70%, 0.4);
+    }
+}
+
+.profile-text {
+    background: rgba(240, 240, 240, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
     padding: 2rem;
-    border-radius: 15px;
-    color: #f5f5f5; /* プロフィール内の文字を白系に */
+    box-shadow: var(--shadow-elegant);
 }
 
-.profile-text-content h1 {
+.hero-title {
     font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    color: #fff;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    background: var(--gradient-cosmic);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 8s ease infinite;
 }
 
-.profile-text-content .subtitle {
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.glow-text {
+    text-shadow: 0 0 20px hsla(266, 100%, 70%, 0.5), 
+                 0 0 40px hsla(266, 100%, 70%, 0.3);
+}
+
+.hero-subtitle {
     font-size: 1.5rem;
-    color: #ccc;
+    color: var(--accent);
     margin-bottom: 2rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
-.profile-text-content p {
-    font-size: 1.1rem;
+.hero-description p {
     margin-bottom: 1.5rem;
-    color: #e0e0e0;
+    font-size: 1.1rem;
+    color: var(--muted-foreground);
+    line-height: 1.7;
 }
 
-/* スマホ表示の調整 */
-@media (max-width: 768px) {
-    .profile-header {
-        min-height: auto;
-        padding: 4rem 1rem;
-    }
-    .profile-background-image {
-        width: 350px;
-        height: 350px;
-    }
-    .profile-text-content h1 {
-        font-size: 2.5rem;
-    }
-    .profile-text-content .subtitle {
-        font-size: 1.2rem;
-    }
-    .profile-text-content p {
-        font-size: 1rem;
-    }
+/* Category Section */
+.category-section {
+    padding: 4rem 0;
+    background: var(--card);
 }
 
-
-/* --- カテゴリ選択セクション --- */
-.category-selection-section {
-    padding: 4rem 2rem;
+.category-section h2 {
     text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--foreground);
 }
 
-.category-selection-section h2 {
-    color: #2c3e50;
-    margin-bottom: 2rem;
-}
-
-.category-container {
+.category-tabs {
     display: flex;
     justify-content: center;
+    gap: 1rem;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 2rem;
 }
 
-.category-item {
-    padding: 0.8rem 1.8rem;
-    border-radius: 25px;
-    background: #fff;
-    color: #2c3e50;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border: 2px solid transparent;
+.category-tab {
+    padding: 1rem 2rem;
+    border: 2px solid var(--border);
+    background: transparent;
+    color: var(--muted-foreground);
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-.category-item:hover, .category-item.active {
-    background: #2c3e50;
-    color: white;
+.category-tab:hover,
+.category-tab.active {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-cosmic);
 }
 
-/* --- 作品ギャラリー --- */
-.works-gallery {
-    padding: 4rem 2rem;
+/* Works Section */
+.works-section {
+    padding: 6rem 0;
+    background: var(--background);
 }
 
-.work-category-section {
+.work-category {
     display: none;
+    animation: fade-in-up 0.6s ease-out;
 }
 
-.work-category-section.active {
+.work-category.active {
     display: block;
 }
 
-.work-category-section h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 3rem;
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.work-grid {
+.work-category h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--foreground);
+}
+
+.works-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
 }
 
 .work-item {
-    background: #fff;
-    border-radius: 12px;
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    border: 1px solid #eee;
+    transition: var(--transition-spring);
+    position: relative;
 }
 
-.work-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
-
-.work-item video, .work-item img {
+.work-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.8s ease;
+    z-index: 1;
+}
+
+.work-item:hover::before {
+    left: 100%;
+}
+
+.work-item a {
+    text-decoration: none;
+    color: inherit;
     display: block;
 }
 
-.work-info {
+.work-media {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.work-media video,
+.work-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.work-item:hover .work-media video,
+.work-item:hover .work-media img {
+    transform: scale(1.05);
+}
+
+.work-content {
     padding: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
-.work-info h3 {
+.work-content h4 {
+    font-size: 1.25rem;
     margin-bottom: 0.5rem;
-    color: #2c3e50;
+    color: var(--foreground);
 }
 
-.work-info p {
-    color: #666;
-    font-size: 0.9rem;
+.work-content p {
+    color: var(--muted-foreground);
     line-height: 1.6;
 }
 
-/* --- 作品についてセクション --- */
+.hover-lift {
+    transition: var(--transition-spring);
+}
+
+.hover-lift:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--shadow-cosmic);
+}
+
+/* About Section */
 .about-section {
-    padding: 4rem 2rem;
+    padding: 4rem 0;
+    background: var(--card);
     text-align: center;
 }
 
 .about-section h2 {
+    font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #2c3e50;
+    color: var(--foreground);
 }
 
-/* --- フッター --- */
-footer {
-    padding: 2rem;
+.about-section p {
+    font-size: 1.2rem;
+    color: var(--muted-foreground);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 0;
+    background: var(--background);
     text-align: center;
-    background: #2c3e50;
-    color: white;
+    border-top: 1px solid var(--border);
+}
+
+.footer p {
+    color: var(--muted-foreground);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description p {
+        font-size: 1rem;
+    }
+    
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .category-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .category-tab {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .category-section h2,
+    .work-category h3,
+    .about-section h2 {
+        font-size: 2rem;
+    }
+    
+    .about-section p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .profile-text {
+        padding: 1.5rem;
+    }
+    
+    .work-content {
+        padding: 1rem;
+    }
 }
