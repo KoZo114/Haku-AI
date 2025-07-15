@@ -1,253 +1,262 @@
 /* リセットスタイル */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
 }
 
 /* 全体的なスタイル */
 body {
-    font-family: 'Noto Sans JP', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+font-family: 'Noto Sans JP', sans-serif;
+line-height: 1.6;
+color: #333;
+background-color: #f5f5f5;
 }
 
-/* --- プロフィールセクション --- */
+/* --- プロフィールセクション --- /
 .profile-header {
-    position: relative; /* 星エフェクトの基準 */
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    overflow: hidden;
-    background-color: #000; /* 背景を黒に */
+position: relative; / 星エフェクトの基準 /
+width: 100%;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 2rem;
+overflow: hidden;
+background-color: #000; / 背景を黒に */
 }
 
-/* プロフィール背景にだけ静的な星を追加 */
+/* プロフィール背景に流れる星を追加 /
 .profile-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(1px 1px at 30px 60px, #eee, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 150px 120px, #ddd, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 120px 180px, #fff, rgba(0,0,0,0));
-    background-repeat: repeat;
-    background-size: 250px 250px;
-    z-index: 0;
-    /* ↓ この一行を追加してアニメーションを適用 */
-    animation: glow-and-grow 3s linear infinite;
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image:
+radial-gradient(1px 1px at 30px 60px, #eee, rgba(0,0,0,0)),
+radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+radial-gradient(1px 1px at 150px 120px, #ddd, rgba(0,0,0,0)),
+radial-gradient(2px 2px at 120px 180px, #fff, rgba(0,0,0,0));
+background-repeat: repeat;
+background-size: 250px 250px;
+z-index: 0;
+animation: flow-stars 5s linear infinite; / 流れる星のアニメーションを適用 */
 }
 
+@keyframes flow-stars {
+0% {
+transform: translate(100vw, -50vh) scale(0.3);
+opacity: 1;
+}
+100% {
+transform: translate(-10vw, 150vh) scale(1);
+opacity: 0;
+}
+}
 
 .profile-container {
-    position: relative;
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
-    z-index: 2; /* 星エフェクトより手前に */
+position: relative;
+max-width: 800px;
+width: 100%;
+text-align: center;
+z-index: 2; /* 星エフェクトより手前に */
 }
 
 .profile-background-image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    z-index: -1; /* テキストの背後に */
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 500px;
+height: 500px;
+z-index: -1; /* テキストの背後に */
 }
 
 .profile-background-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5; /* 画像を薄く表示 */
-    filter: grayscale(20%); /* 色味を少し抑える */
+width: 100%;
+height: 100%;
+object-fit: cover;
+opacity: 0.5; /* 画像を薄く表示 /
+filter: grayscale(20%); / 色味を少し抑える */
 }
 
 .profile-text-content {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2rem;
-    border-radius: 15px;
-    color: #f5f5f5; /* プロフィール内の文字を白系に */
+background: rgba(0, 0, 0, 0.3);
+padding: 2rem;
+border-radius: 15px;
+color: #f5f5f5; /* プロフィール内の文字を白系に */
 }
 
 .profile-text-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    color: #fff;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+font-size: 3.5rem;
+margin-bottom: 0.5rem;
+color: #fff;
+text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .profile-text-content .subtitle {
-    font-size: 1.5rem;
-    color: #ccc;
-    margin-bottom: 2rem;
-    font-weight: 400;
+font-size: 1.5rem;
+color: #ccc;
+margin-bottom: 2rem;
+font-weight: 400;
 }
 
 .profile-text-content p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    color: #e0e0e0;
+font-size: 1.1rem;
+margin-bottom: 1.5rem;
+color: #e0e0e0;
 }
 
 /* スマホ表示の調整 */
 @media (max-width: 768px) {
-    .profile-header {
-        min-height: auto;
-        padding: 4rem 1rem;
-    }
-    .profile-background-image {
-        width: 350px;
-        height: 350px;
-    }
-    .profile-text-content h1 {
-        font-size: 2.5rem;
-    }
-    .profile-text-content .subtitle {
-        font-size: 1.2rem;
-    }
-    .profile-text-content p {
-        font-size: 1rem;
-    }
+.profile-header {
+min-height: auto;
+padding: 4rem 1rem;
 }
-
+.profile-background-image {
+width: 350px;
+height: 350px;
+}
+.profile-text-content h1 {
+font-size: 2.5rem;
+}
+.profile-text-content .subtitle {
+font-size: 1.2rem;
+}
+.profile-text-content p {
+font-size: 1rem;
+}
+}
 
 /* --- カテゴリ選択セクション --- */
 .category-selection-section {
-    padding: 4rem 2rem;
-    text-align: center;
+padding: 4rem 2rem;
+text-align: center;
 }
 
 .category-selection-section h2 {
-    color: #2c3e50;
-    margin-bottom: 2rem;
+color: #2c3e50;
+margin-bottom: 2rem;
 }
 
 .category-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 2rem;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 1.5rem;
+margin-top: 2rem;
 }
 
 .category-item {
-    padding: 0.8rem 1.8rem;
-    border-radius: 25px;
-    background: #fff;
-    color: #2c3e50;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border: 2px solid transparent;
+padding: 0.8rem 1.8rem;
+border-radius: 25px;
+background: #fff;
+color: #2c3e50;
+text-decoration: none;
+transition: all 0.3s ease;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+border: 2px solid transparent;
 }
 
 .category-item:hover, .category-item.active {
-    background: #2c3e50;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+background: #2c3e50;
+color: white;
+transform: translateY(-3px);
+box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
 /* --- 作品ギャラリー --- */
 .works-gallery {
-    padding: 4rem 2rem;
+padding: 4rem 2rem;
 }
 
 .work-category-section {
-    display: none;
+display: none;
 }
 
 .work-category-section.active {
-    display: block;
+display: block;
 }
 
 .work-category-section h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 3rem;
+text-align: center;
+font-size: 2rem;
+color: #2c3e50;
+margin-bottom: 3rem;
 }
 
 .work-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2.5rem;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 2.5rem;
 }
 
 .work-item {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    border: 1px solid #eee;
+background: #fff;
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+transition: transform 0.3s ease;
+border: 1px solid #eee;
 }
 
 .work-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+transform: translateY(-8px);
+box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 .work-item video, .work-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
+width: 100%;
+height: 200px;
+object-fit: cover;
+display: block;
 }
 
 .work-info {
-    padding: 1.5rem;
+padding: 1.5rem;
 }
 
 .work-info h3 {
-    margin-bottom: 0.5rem;
-    color: #2c3e50;
+margin-bottom: 0.5rem;
+color: #2c3e50;
 }
 
 .work-info p {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.6;
+color: #666;
+font-size: 0.9rem;
+line-height: 1.6;
 }
 
 /* --- 作品についてセクション --- */
 .about-section {
-    padding: 4rem 2rem;
-    text-align: center;
+padding: 4rem 2rem;
+text-align: center;
 }
 
 .about-section h2 {
-    margin-bottom: 2rem;
-    color: #2c3e50;
+margin-bottom: 2rem;
+color: #2c3e50;
 }
 
 /* --- フッター --- */
 footer {
-    padding: 2rem;
-    text-align: center;
-    background: #2c3e50;
-    color: white;
+padding: 2rem;
+text-align: center;
+background: #2c3e50;
+color: white;
 }
 
-/* --- 星のまたたきと拡大アニメーション --- */
-@keyframes glow-and-grow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1); /* 元のサイズ */
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.5); /* 1.5倍のサイズ */
-  }
+/* --- 流れる星のアニメーション --- */
+@keyframes flow-stars {
+0% {
+transform: translate(100vw, -50vh) scale(0.3);
+opacity: 1;
+}
+100% {
+transform: translate(-10vw, 150vh) scale(1);
+opacity: 0;
+}
 }
