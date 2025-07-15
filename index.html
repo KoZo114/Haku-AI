@@ -3,178 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HakuのAIアート作品集</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <title>HakuのAIアート作品集 - AIと創造性の探求者</title>
+    <meta name="description" content="AIの可能性に魅せられ、日々新しいものを生み出すことに情熱を注ぐHakuのポートフォリオサイトです。" />
+    <meta name="author" content="Haku" />
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Meta Tags -->
     <meta property="og:title" content="HakuのAIアート作品集 - AIと創造性の探求者" />
-    <meta property="og:description" content="AIの可能性に魅せられ、日々新しいものを生み出すことに情熱を注ぐHakuのポートフォリオサイトです。AIを使ってスマホゲーム開発やホームページ制作、動画制作などを行っています。" />
+    <meta property="og:description" content="AIの可能性に魅せられ、日々新しいものを生み出すことに情熱を注ぐHakuのポートフォリオサイトです。" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://kozo114.github.io/Haku-AI/ogp.png" />
-    <meta property="og:url" content="https://kozo114.github.io/Haku-AI/" />
-    <meta property="og:site_name" content="HakuのAIアート作品集" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="HakuのAIアート作品集 - AIと創造性の探求者" />
-    <meta name="twitter:description" content="AIの可能性に魅せられ、日々新しいものを生み出すことに情熱を注ぐHakuのポートフォリオサイトです。AIを使ってスマホゲーム開発やホームページ制作、動画制作などを行っています。" />
+    <meta name="twitter:description" content="AIの可能性に魅せられ、日々新しいものを生み出すことに情熱を注ぐHakuのポートフォリオサイトです。" />
     <meta name="twitter:image" content="https://kozo114.github.io/Haku-AI/ogp.png" />
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="profile-header">
-        <div class="profile-container">
-            <div class="profile-background-image">
-                <img src="profile.png" alt="">
-            </div>
-            <div class="profile-text-content">
-                <h1>Haku</h1>
-                <p class="subtitle">AIと創造性の探求者</p>
-                <p>こんにちは、Hakuです！ AIの可能性に魅せられ、日々新しいものを生み出すことに情熱を注いでいます。</p>
-                <p>GitHubを拠点に、AIを使ってスマホゲームを作ったり、素敵なホームページをサクッと立ち上げたりするのが得意です。コードを書くのも、AIの力を借りて効率的に、そして面白いものを作るのが好きなんです。</p>
-                <p>また、動画やMV（ミュージックビデオ）制作もAIツールを駆使して行っています。「こんな動画が作りたい！」というアイデアを、AIと一緒に形にするのが楽しいですね。</p>
-                <p>AIの力で、あなたの「あったらいいな」を一緒に実現しませんか？ お気軽にお声がけください！</p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="particle-bg"></div>
+        <div class="hero-content">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="profile.png" alt="Haku プロフィール画像" />
+                </div>
+                <div class="profile-text">
+                    <h1 class="hero-title glow-text">Haku</h1>
+                    <p class="hero-subtitle">AIと創造性の探求者</p>
+                    <div class="hero-description">
+                        <p>こんにちは、Hakuです！ AIの可能性に魅せられ、日々新しいものを生み出すことに情熱を注いでいます。</p>
+                        <p>GitHubを拠点に、AIを使ってスマホゲームを作ったり、素敵なホームページをサクッと立ち上げたりするのが得意です。コードを書くのも、AIの力を借りて効率的に、そして面白いものを作るのが好きなんです。</p>
+                        <p>また、動画やMV（ミュージックビデオ）制作もAIツールを駆使して行っています。「こんな動画が作りたい！」というアイデアを、AIと一緒に形にするのが楽しいですね。</p>
+                        <p>AIの力で、あなたの「あったらいいな」を一緒に実現しませんか？ お気軽にお声がけください！</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="category-selection-section">
+    <!-- Category Selector -->
+    <section class="category-section">
+        <div class="container">
             <h2>作品カテゴリ</h2>
-            <div class="category-container">
-                <a href="#ai-video-works-section" class="category-item active" data-category="ai-video-works">AI動画作品</a>
-                <a href="#ai-game-works-section" class="category-item" data-category="ai-game-works">AIと作るゲーム作品</a>
-                <a href="#ai-programming-works-section" class="category-item" data-category="ai-programming-works">AIと学ぶプログラミング</a>
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="ai-video">
+                    AI動画作品
+                </button>
+                <button class="category-tab" data-category="ai-game">
+                    AIと作るゲーム作品
+                </button>
+                <button class="category-tab" data-category="ai-programming">
+                    AIと学ぶプログラミング
+                </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="works-gallery">
-            <div id="ai-video-works-section" class="work-category-section active" data-category-id="ai-video-works">
+    <!-- Works Gallery -->
+    <section class="works-section">
+        <div class="container">
+            <!-- AI Video Works -->
+            <div class="work-category active" data-category="ai-video">
                 <h3>AI動画作品</h3>
-                <div class="work-grid">
-                    <div class="work-item">
-                        <video controls poster="hakuyubi.PNG"> 
-                            <source src="video.mp4" type="video/mp4">
-                            お使いのブラウザはビデオをサポートしていません。
-                        </video>
-                        <div class="work-info">
-                            <h3>AIアート作品 #1</h3>
+                <div class="works-grid">
+                    <div class="work-item hover-lift">
+                        <div class="work-media">
+                            <video controls poster="hakuyubi.PNG">
+                                <source src="video.mp4" type="video/mp4">
+                                お使いのブラウザはビデオをサポートしていません。
+                            </video>
+                        </div>
+                        <div class="work-content">
+                            <h4>AIアート作品 #1</h4>
                             <p>AIで生成されたアート作品の紹介</p>
                         </div>
                     </div>
-                    <div class="work-item">
-                        <video controls poster="IMG_6508.png"> 
-                            <source src="1080p.MP4" type="video/mp4">
-                            お使いのブラウザはビデオをサポートしていません。
-                        </video>
-                        <div class="work-info">
-                            <h3>AIアート作品 #2</h3>
+                    
+                    <div class="work-item hover-lift">
+                        <div class="work-media">
+                            <video controls poster="IMG_6508.png">
+                                <source src="1080p.MP4" type="video/mp4">
+                                お使いのブラウザはビデオをサポートしていません。
+                            </video>
+                        </div>
+                        <div class="work-content">
+                            <h4>AIアート作品 #2</h4>
                             <p>AIを使用したプロジェクト</p>
                         </div>
                     </div>
-                    <div class="work-item">
-                        <video controls poster="dennsya.JPG"> 
-                            <source src="dennsya.mp4" type="video/mp4">
-                            お使いのブラウザはビデオをサポートしていません。
-                        </video>
-                        <div class="work-info">
-                            <h3>AIアート作品 #3</h3>
+                    
+                    <div class="work-item hover-lift">
+                        <div class="work-media">
+                            <video controls poster="dennsya.JPG">
+                                <source src="dennsya.mp4" type="video/mp4">
+                                お使いのブラウザはビデオをサポートしていません。
+                            </video>
+                        </div>
+                        <div class="work-content">
+                            <h4>AIアート作品 #3</h4>
                             <p>AIの実装MV</p>
                         </div>
                     </div>
-                    <div class="work-item">
-                        <video controls poster="IMG_6506.PNG"> 
-                            <source src="haku1.mp4" type="video/mp4">
-                            お使いのブラウザはビデオをサポートしていません。
-                        </video>
-                        <div class="work-info">
-                            <h3>AIアート作品 #4</h3>
+                    
+                    <div class="work-item hover-lift">
+                        <div class="work-media">
+                            <video controls poster="IMG_6506.PNG">
+                                <source src="haku1.mp4" type="video/mp4">
+                                お使いのブラウザはビデオをサポートしていません。
+                            </video>
+                        </div>
+                        <div class="work-content">
+                            <h4>AIアート作品 #4</h4>
                             <p>AIで繋げた動画</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="ai-game-works-section" class="work-category-section" data-category-id="ai-game-works">
+            <!-- AI Game Works -->
+            <div class="work-category" data-category="ai-game">
                 <h3>AIと作るゲーム作品</h3>
-                <div class="work-grid">
-                    <div class="work-item">
-                        <a href="https://kozo114.github.io/CNP-Catch-" target="_blank">
-                            <img src="cnp.png" alt="CNP Catch サムネイル">
+                <div class="works-grid">
+                    <div class="work-item hover-lift">
+                        <a href="https://kozo114.github.io/CNP-Catch-" target="_blank" rel="noopener noreferrer">
+                            <div class="work-media">
+                                <img src="cnp.png" alt="CNP Catch サムネイル">
+                            </div>
+                            <div class="work-content">
+                                <h4>CNP Catch</h4>
+                                <p>シンプルだけど奥深い、中毒性のあるカジュアルゲーム！<br>クリックしてプレイ！</p>
+                            </div>
                         </a>
-                        <div class="work-info">
-                            <h3>CNP Catch</h3>
-                            <p>シンプルだけど奥深い、中毒性のあるカジュアルゲーム！<br>クリックしてプレイ！</p>
-                        </div>
                     </div>
-                    <div class="work-item">
-                        <a href="https://kozo114.github.io/Reborn-catch/" target="_blank">
-                            <img src="reborn.png" alt="Reborn Catch サムネイル">
+                    
+                    <div class="work-item hover-lift">
+                        <a href="https://kozo114.github.io/Reborn-catch/" target="_blank" rel="noopener noreferrer">
+                            <div class="work-media">
+                                <img src="reborn.png" alt="Reborn Catch サムネイル">
+                            </div>
+                            <div class="work-content">
+                                <h4>Reborn Catch</h4>
+                                <p>人気ゲームの続編！進化した操作性と新しいチャレンジ！<br>クリックしてプレイ！</p>
+                            </div>
                         </a>
-                        <div class="work-info">
-                            <h3>Reborn Catch</h3>
-                            <p>人気ゲームの続編！進化した操作性と新しいチャレンジ！<br>クリックしてプレイ！</p>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="ai-programming-works-section" class="work-category-section" data-category-id="ai-programming-works">
+            <!-- AI Programming Works -->
+            <div class="work-category" data-category="ai-programming">
                 <h3>AIと学ぶプログラミング</h3>
-                <div class="work-grid">
-                    <div class="work-item">
-                        <a href="https://kozo114.github.io/headspa1/" target="_blank">
-                            <img src="player-thumbnail.png" alt="AIコーディング作オーディオプレイヤー サムネイル">
+                <div class="works-grid">
+                    <div class="work-item hover-lift">
+                        <a href="https://kozo114.github.io/headspa1/" target="_blank" rel="noopener noreferrer">
+                            <div class="work-media">
+                                <img src="player-thumbnail.png" alt="AIコーディング作オーディオプレイヤー サムネイル">
+                            </div>
+                            <div class="work-content">
+                                <h4>AIコーディング作オーディオプレイヤー</h4>
+                                <p>AIと協力して開発した、直感的な操作が可能なオーディオプレイヤー。Web技術を学びながら作りました。</p>
+                            </div>
                         </a>
-                        <div class="work-info">
-                            <h3>AIコーディング作オーディオプレイヤー</h3>
-                            <p>AIと協力して開発した、直感的な操作が可能なオーディオプレイヤー。Web技術を学びながら作りました。</p>
-                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="about-section">
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
             <h2>作品について</h2>
             <p>これらの作品はAIを使用して生成されたデジタルアートです。AIの創造性と人間の感性が融合した、新しい形の芸術表現を追求しています。</p>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 AIアート作品集</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 HakuのAIアート作品集. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const categoryItems = document.querySelectorAll('.category-item');
-            const workCategorySections = document.querySelectorAll('.work-category-section');
-
-            const initialActiveCategory = document.querySelector('.category-item.active');
-            if (initialActiveCategory) {
-                const targetId = initialActiveCategory.dataset.category;
-                const targetSection = document.querySelector(`[data-category-id="${targetId}"]`);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                }
-            }
-
-            categoryItems.forEach(item => {
-                item.addEventListener('click', (event) => {
-                    event.preventDefault();
-
-                    categoryItems.forEach(cat => cat.classList.remove('active'));
-                    workCategorySections.forEach(sec => sec.classList.remove('active'));
-
-                    item.classList.add('active');
-
-                    const targetCategory = item.dataset.category;
-                    const targetSection = document.querySelector(`[data-category-id="${targetCategory}"]`);
-                    if (targetSection) {
-                        targetSection.classList.add('active');
-                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
