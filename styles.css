@@ -184,13 +184,13 @@ body {
 
 .profile-text {
 	/* ぼかし具合を弱くします (数値を小さくすると弱くなる) */
-	backdrop-filter: blur(4px);
+	backdrop-filter: blur(2px);
 
 	/* 背景の白色をさらに薄くします (最後の数値を小さくすると薄くなる) */
-	background: rgba(240, 240, 240, 0.03);
+	background: rgba(240, 240, 240, 0.01);
 
 	/* 枠線の色も少し薄くします */
-	border: 1px solid rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.03);
 	
 	/* --- 以下は元の設定と同じです --- */
 	border-radius: 1rem;
