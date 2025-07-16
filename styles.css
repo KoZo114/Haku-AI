@@ -456,8 +456,8 @@ body {
     }
     
     .profile-image {
-        width: 150px;
-        height: 150px;
+        width: 380px;
+        height: 380px;
     }
     
     .category-tabs {
@@ -490,7 +490,13 @@ body {
     .hero-title {
         font-size: 2rem;
     }
-    
+	
+    .profile-image {
+	/* スマホ向けに背景をさらに少し小さくする */
+	width: 320px;
+	height: 320px;
+}
+
     .profile-text {
         padding: 1.5rem;
     }
