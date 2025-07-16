@@ -120,16 +120,43 @@ body {
     padding: 2rem;
 }
 
+/* この部分を差し替え */
 .profile-container {
+	max-width: 800px;
+	margin: 0 auto;
+	position: relative; /* 要素を重ねて配置するための基準点にします */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 4rem 0; /* 全体の上下に余白を持たせます */
+}
+/*.profile-container {
     max-width: 800px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-}
+}*/
 
+/* この部分を差し替え */
 .profile-image {
+	width: 450px; /* 好みに合わせてサイズを調整 */
+	height: 450px; /* 好みに合わせてサイズを調整 */
+	border-radius: 50%;
+	overflow: hidden;
+	border: 4px solid var(--primary);
+	box-shadow: var(--shadow-glow);
+	animation: pulse-glow 3s ease-in-out infinite;
+	
+	/* --- 位置と透明度を調整するために以下を追加 --- */
+	position: absolute;   /* 位置を自由に変えられるようにします */
+	top: 50%;             /* 上から中央の位置へ */
+	left: 50%;            /* 左から中央の位置へ */
+	transform: translate(-50%, -50%); /* 要素自体のズレを補正して真ん中に */
+	opacity: 0.2;         /* 画像を少し薄くして文字が読みやすいようにします */
+}
+/*.profile-image {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -137,7 +164,7 @@ body {
     border: 4px solid var(--primary);
     box-shadow: var(--shadow-glow);
     animation: pulse-glow 3s ease-in-out infinite;
-}
+}*/
 
 .profile-image img {
     width: 100%;
@@ -155,14 +182,27 @@ body {
     }
 }
 
+/* この部分を差し替え */
 .profile-text {
+	background: rgba(240, 240, 240, 0.1);
+	backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 1rem;
+	padding: 2rem;
+	box-shadow: var(--shadow-elegant);
+
+	/* --- 重なりの順番を調整するために以下を追加 --- */
+	position: relative; /* 重なりの順番を指定できるようにします */
+	z-index: 1;         /* 画像よりも手前(1番)に表示させます */
+}
+/*.profile-text {
     background: rgba(240, 240, 240, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 1rem;
     padding: 2rem;
     box-shadow: var(--shadow-elegant);
-}
+}*/
 
 .hero-title {
     font-size: 3.5rem;
