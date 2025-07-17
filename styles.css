@@ -154,7 +154,7 @@ body {
 	top: 50%;             /* 上から中央の位置へ */
 	left: 50%;            /* 左から中央の位置へ */
 	transform: translate(-50%, -50%); /* 要素自体のズレを補正して真ん中に */
-	opacity: 0.7;         /* 画像を少し薄くして文字が読みやすいようにします */
+	opacity: 0.65;         /* 画像を少し薄くして文字が読みやすいようにします */
 }
 /*.profile-image {
     width: 200px;
@@ -187,7 +187,7 @@ body {
 	backdrop-filter: blur(1px);
 
 	/* 背景の白色をさらに薄くします (最後の数値を小さくすると薄くなる) */
-	background: rgba(240, 240, 240, 0.01);
+	background: rgba(240, 240, 240, 0.02);
 
 	/* 枠線の色も少し薄くします */
 	border: 1px solid rgba(255, 255, 255, 0.01);
